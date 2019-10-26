@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/26 17:17:56 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/26 17:45:10 by tlynesse         ###   ########.fr       */
+/*   Created: 2019/10/25 03:55:40 by tlynesse          #+#    #+#             */
+/*   Updated: 2019/10/26 17:09:45 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "lem_in.h"
 
-int		ft_bfs_heights_count(t_room_out *start)
+int				main(int argc, char **argv)
 {
-	start->data->height = 0;
-	
-}
-
-void	lem_in(t_room_out *start, t_room_out *end)
-{
-	
+	(void) argv;
+	if (argc == 1)
+		lem_in(0);
+	else if (argc == 2)
+		lem_in(open(argv[1], O_RDONLY));
+	else
+		terminate(-1);
 }

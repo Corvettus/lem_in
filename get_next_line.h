@@ -1,24 +1,24 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   lem_in.c                                           :+:      :+:    :+:   */
+/*   get_next_line.h                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/26 17:17:56 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/26 17:45:10 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/12/14 18:39:47 by tlynesse          #+#    #+#             */
+/*   Updated: 2019/01/22 18:35:59 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+#ifndef GET_NEXT_LINE_H
+# define GET_NEXT_LINE_H
 
-int		ft_bfs_heights_count(t_room_out *start)
-{
-	start->data->height = 0;
-	
-}
+# define BUFF_SIZE 21
+# define FD_MAX_NUM 4864
 
-void	lem_in(t_room_out *start, t_room_out *end)
-{
-	
-}
+# include <sys/types.h>
+# include "./libft/includes/libft.h"
+
+int	get_next_line(const int fd, char **line);
+
+#endif

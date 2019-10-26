@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/26 10:29:23 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/26 19:03:10 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,6 +23,7 @@ typedef struct	s_room_data
 	char	*name;
 	int		x;
 	int		y;
+	int		height;
 }				t_room_data;
 
 typedef struct	s_room_list_rough
@@ -41,11 +42,12 @@ typedef struct	s_link_list_rough
 	t_link_list_rough	*next;
 }				t_link_list_rough;
 
-typedef struct	s_room_in
+typedef struct	s_room
 {
 	t_room_data	*data;
-	t_room_out	*room_out;
-}				t_room_in;
+	char		type; // i = in, o = out
+	t_link_list	*link_list;
+}				t_room;
 
 typedef struct	s_link
 {
@@ -53,10 +55,16 @@ typedef struct	s_link
 	t_room_in	*room_in;
 }				t_link;
 
+typedef struct	s_room_in
+{
+	t_room_data	*data;
+	t_room_out	*room_out;
+}				t_room_in;
+
 typedef struct	s_link_list
 {
 	t_link		*prev;
-	t_room_in	*room_in;
+	t_room_in	*room;
 	t_link		*next;
 }				t_link_list;
 

@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 04:51:52 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/26 15:47:52 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/26 17:43:50 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -46,13 +46,6 @@ t_room_out	*ft_cast_map_elem_out(t_room_list_rough *r_room)
 
 	if ((res = (t_room_out*)malloc(sizeof(t_room_out))) == NULL)
 		return (NULL);
-	if ((res->data->name = ft_strdup(r_room->data->name)) == NULL)
-	{
-		free(res);
-		return (NULL);
-	}
-	res->data->x = r_room->data->x;
-	res->data->y = r_room->data->y;
 	res->link_list = NULL;
 	return (res);
 }
@@ -125,6 +118,7 @@ t_room_in	*ft_cast_map_elem_in(t_room_list_rough *r_room)
 	res->data->x = r_room->data->x;
 	res->data->y = r_room->data->y;
 	res->room_out = ft_cast_map_elem_out(r_room);
+	res->room_out->data = res->data;
 	return (res);
 }
 
@@ -201,5 +195,5 @@ t_room_in	*ft_build(t_room_list_rough *r_room, t_link_list_rough *r_link)
 	{
 		//err
 	}
-	
+
 }
