@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   lem_in.h                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/27 06:32:46 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/27 07:43:21 by wclayton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -97,6 +97,21 @@ typedef struct	s_inp_val_data
 	t_room_list_rough	*r_lr;
 	t_link_list_rough	*l_lr;
 }				t_inp_val_data;
+
+
+typedef struct	s_way
+{
+	t_room			*room;
+	struct s_way	*next;
+}				t_way;
+
+typedef struct	s_path
+{
+	t_way			*way;
+	int				limit;
+	int				len;
+	struct s_path	*next;
+}				t_path;
 
 int main_input(void);
 
