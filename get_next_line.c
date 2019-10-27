@@ -11,7 +11,6 @@
 /* ************************************************************************** */
 
 #include "get_next_line.h"
-#include "./libft/includes/libft.h"
 #include <stdio.h>
 
 static void	ft_joining_buff(const int fd, char **tmp,

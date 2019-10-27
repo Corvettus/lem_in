@@ -17,7 +17,7 @@
 # define FD_MAX_NUM 4864
 
 # include <sys/types.h>
-# include "./libft/includes/libft.h"
+# include "libft/libft.h"
 
 int	get_next_line(const int fd, char **line);
 

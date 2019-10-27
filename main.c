@@ -14,11 +14,14 @@
 
 int				main(int argc, char **argv)
 {
-	(void) argv;
-	if (argc == 1)
-		lem_in(0);
-	else if (argc == 2)
-		lem_in(open(argv[1], O_RDONLY));
-	else
-		terminate(-1);
+	//(void) argv;
+	//if (argc == 1)
+	//	lem_in(0);
+	//else if (argc == 2)
+	//	lem_in(open(argv[1], O_RDONLY));
+	//else
+	//	terminate(-1);
+
+	main_input();
+	return (0);
 }
