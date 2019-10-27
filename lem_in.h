@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/26 19:03:10 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/27 04:38:41 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -51,33 +51,22 @@ typedef struct	s_room
 
 typedef struct	s_link
 {
-	float		weight;
-	t_room_in	*room_in;
+	float	weight;
+	t_room	*room_in_to;
 }				t_link;
-
-typedef struct	s_room_in
-{
-	t_room_data	*data;
-	t_room_out	*room_out;
-}				t_room_in;
 
 typedef struct	s_link_list
 {
 	t_link		*prev;
-	t_room_in	*room;
+	t_room		*room;
 	t_link		*next;
 }				t_link_list;
 
-typedef struct	s_room_out
-{
-	t_room_data	*data;
-	t_link_list	*link_list;
-}				t_room_out;
 
 typedef struct	s_ends
 {
-	t_room_in	*start;
-	t_room_in	*end;
+	t_room	*start;
+	t_room	*end;
 }				t_ends;
 
 

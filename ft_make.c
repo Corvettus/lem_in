@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 04:51:52 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/26 17:43:50 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/27 05:45:41 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -30,7 +30,7 @@ t_room_list_rough	*ft_seach_ends(t_room_list_rough *r_room, int mode)
 		return (NULL);
 }
 
-t_room_list_rough	*ft_seach_name(t_room_list_rough *r_room, char *name)
+t_room_list_rough	*ft_r_seach_name(t_room_list_rough *r_room, char *name)
 {
 	while (ft_strcmp((const char*)r_room->data->name, (const char*)name) != 0)
 		r_room = r_room->next;
@@ -40,39 +40,47 @@ t_room_list_rough	*ft_seach_name(t_room_list_rough *r_room, char *name)
 		return (NULL);
 }
 
-t_room_out	*ft_cast_map_elem_out(t_room_list_rough *r_room)
-{
-	t_room_out	*res;
+//==============================================================================
 
-	if ((res = (t_room_out*)malloc(sizeof(t_room_out))) == NULL)
+t_room	*ft_cast_map_elem_out(t_room_data *data)
+{
+	t_room	*res;
+
+	if ((res = (t_room*)malloc(sizeof(t_room))) == NULL)
 		return (NULL);
+	res->data = data;
+	res->type = 'o';
 	res->link_list = NULL;
 	return (res);
 }
 
-t_link	*ft_cast_link(t_room_in *room_in_to)
+t_link_list	*ft_cast_link(t_room *room_in_to, char type)
 {
-	t_link	*res;
+	t_link_list	*res;
 
-	if ((res = (t_link*)malloc(sizeof(t_link))) == NULL)
+	if ((res = (t_link_list*)malloc(sizeof(t_link_list))) == NULL)
 		return (NULL);
-	res->room_in = room_in_to;
-	res->weight = 1;
+	res->prev = NULL;
+	res->room = room_in_to;
+	res->next = NULL;
+	if (type == 'i')
+		res->weight = 1;
 	return (res);
 }
 
-void	ft_add_link_elem_out(t_room_out **room_out, t_room_in *room_in_to)
+t_link_list	*ft_add_link(t_room *room, char type)
 {
-	t_link	*tmp;
+	t_link_list	*tmp;
+	t_room		*room_in_to;
 
-	tmp = (*room_out)->link_list;
+	tmp = room->link_list;
 	if (tmp == NULL)
-		(*room_out)->link_list = ft_cast_link(room_in_to);
+		room->link_list = ft_cast_link(room_in_to, type);
 	else
 	{
-		while (tmp->room_in != NULL)
-			tmp = tmp->room_in;
-		tmp->room_in = ft_cast_link(room_in_to);
+		while (tmp->next != NULL)
+			tmp = tmp->next;
+		tmp->next = ft_cast_link(room_in_to, type);
 	}
 }
 
@@ -104,11 +112,11 @@ t_link_list_rough *to_del)
 	return (*r_link);
 }
 
-t_room_in	*ft_cast_map_elem_in(t_room_list_rough *r_room)
+t_room	*ft_cast_map_elem_in(t_room_list_rough *r_room, char type)
 {
-	t_room_in	*res;
+	t_room	*res;
 
-	if ((res = (t_room_out*)malloc(sizeof(t_room_out))) == NULL)
+	if ((res = (t_room*)malloc(sizeof(t_room))) == NULL)
 		return (NULL);
 	if ((res->data->name = ft_strdup(r_room->data->name)) == NULL)
 	{
@@ -117,16 +125,18 @@ t_room_in	*ft_cast_map_elem_in(t_room_list_rough *r_room)
 	}
 	res->data->x = r_room->data->x;
 	res->data->y = r_room->data->y;
-	res->room_out = ft_cast_map_elem_out(r_room);
-	res->room_out->data = res->data;
+	res->type = 'i';
+	res->link_list = ft_add_link(r_room->data, type);
 	return (res);
 }
 
+//----------------------------------------------------------------------------------------------
+
 int	ft_make_map(t_room_list_rough *r_room, t_link_list_rough **r_link,
-t_room_list_rough *r_start, t_room_in *start)
+t_room_list_rough *r_start, t_room *start)
 {
 	t_link_list_rough	*tmp;
-	t_room_in			*room_in;
+	t_room			*room_in;
 	t_link_list_rough	*r_next;
 
 	tmp = r_link;
@@ -149,8 +159,8 @@ t_room_list_rough *r_start, t_room_in *start)
 		(const char*)r_start->data->name) == 0)
 	{
 		if (start == NULL)
-			start = ft_cast_map_elem_in(r_start);
-		room_in = ft_cast_map_elem_in(ft_seach_name(r_room, tmp->name1));
+			start = ft_cast_map_elem_in(r_start, 'i');
+		room_in = ft_cast_map_elem_in(ft_seach_name(r_room, tmp->name1), 'i');
 	}
 	if (start != NULL && room_in != NULL)
 	{
@@ -182,11 +192,11 @@ t_room_list_rough *r_start, t_room_in *start)
 	return (1);
 }
 
-t_room_in	*ft_build(t_room_list_rough *r_room, t_link_list_rough *r_link)
+t_room	*ft_build(t_room_list_rough *r_room, t_link_list_rough *r_link)
 {
 	t_room_list_rough	*r_start;
 	t_room_list_rough	*r_end;
-	t_room_in			*start;
+	t_room				*start;
 
 	r_start = ft_seach_ends(r_room, 's');
 	r_end = ft_seach_ends(r_room, 'e');

@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 17:17:56 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/26 17:45:10 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/27 01:06:35 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@ int		ft_bfs_heights_count(t_room_out *start)
 	
 }
 
-void	lem_in(t_room_out *start, t_room_out *end)
+void	lem_in(t_room *start, t_room *end)
 {
 	
 }
