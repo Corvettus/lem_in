@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/27 07:52:31 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/27 21:38:42 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,11 +18,12 @@
 # include <stdio.h>
 # include <math.h>
 
-typedef struct	s_room_in	t_room_in;
-typedef struct s_link_list	t_link_list;
+typedef struct	s_room_in			t_room_in;
+typedef struct s_link_list			t_link_list;
 typedef struct s_room_list_rough	t_room_list_rough;
 typedef struct	s_inp_val_data		t_inp_val_data;
 typedef struct	s_ends				t_ends;
+
 
 typedef struct	s_room_data
 {
@@ -30,13 +31,13 @@ typedef struct	s_room_data
 	int		x;
 	int		y;
 	int		height;
+	int		start;
+	int		end;
 }				t_room_data;
 
 typedef struct					s_room_list_rough
 {
 	t_room_data					*data;
-	int							start;
-	int							end;
 	struct s_room_list_rough	*next;
 }								t_room_list_rough;
 
@@ -48,29 +49,17 @@ typedef struct	s_link_list_rough
 	struct s_link_list_rough	*next;
 }				t_link_list_rough;
 
-typedef struct	s_room_out
-{
-	t_room_data			*data;
-	struct s_link_list	*link_list;
-}				t_room_out;
-
-typedef struct	s_room_in
-{
-	t_room_data	*data;
-	t_room_out	*room_out;
-}				t_room_in;
-
 typedef struct	s_link
 {
 	float	weight;
-	t_room	*room_in_to;
+	t_room	*room;
 }				t_link;
 
 typedef struct	s_link_list
 {
-	t_link	*prev;
-	t_room	*room;
-	t_link	*next;
+	t_link_list	*prev;
+	t_link		*room;
+	t_link_list	*next;
 }				t_link_list;
 
 typedef struct	s_room
