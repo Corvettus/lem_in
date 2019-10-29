@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 04:51:52 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/30 00:36:58 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 01:56:08 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -189,6 +189,21 @@ t_room_list_rough *r_start, t_room **start)
 	return (1);
 }
 
+ft_print_map(t_room *start, int height)
+{
+	t_link_list	*tmp;
+	ft_putnbr(height);
+	ft_putendl(start->data->name);
+	tmp = start->link_list->link->room->link_list;
+	while (tmp != NULL)
+	{
+		ft_putendl("");
+		ft_printf("%f\n", tmp->link->weight);
+		ft_print_map(tmp->link->room, height + 1);
+		tmp = tmp->next;
+	}
+}
+
 t_room	*ft_build(t_room_list_rough *r_room, t_link_list_rough *r_link)
 {
 	t_room_list_rough	*r_start;
@@ -201,6 +216,6 @@ t_room	*ft_build(t_room_list_rough *r_room, t_link_list_rough *r_link)
 	{
 		//err
 	}
-	//ft_print_map();
+	ft_print_map(start, 0);
 	return (start);
 }
