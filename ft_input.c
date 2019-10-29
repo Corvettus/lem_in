@@ -6,10 +6,10 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 17:17:52 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/26 17:17:53 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 00:52:23 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft/libft.h"
+
 #include "lem_in.h"
 #include "get_next_line.h"
 

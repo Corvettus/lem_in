@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/30 00:32:34 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 01:05:11 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -23,7 +23,6 @@ typedef struct s_link_list			t_link_list;
 typedef struct s_room_list_rough	t_room_list_rough;
 typedef struct	s_inp_val_data		t_inp_val_data;
 typedef struct	s_ends				t_ends;
-
 
 typedef struct	s_room_data
 {
