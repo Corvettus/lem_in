@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/28 16:13:01 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 00:32:34 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -65,7 +65,7 @@ typedef struct	s_link_list
 typedef struct	s_room
 {
 	t_room_data	*data;
-	char		type; // i = in, o = out
+	int			type;
 	t_link_list	*link_list;
 }				t_room;
 

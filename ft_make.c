@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 04:51:52 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/28 23:40:51 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 00:36:58 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,13 +16,13 @@ t_room_list_rough	*ft_seach_ends(t_room_list_rough *r_room, int mode)
 {
 	if (mode == 's')
 	{
-		while (r_room->data->start == 1)
+		while (r_room->data->start_fl == 1)
 			r_room = r_room->next;
 		return (r_room);
 	}
 	else if (mode == 'e')
 	{
-		while (r_room->data->end == 1)
+		while (r_room->data->end_fl == 1)
 			r_room = r_room->next;
 		return (r_room);
 	}
@@ -63,12 +63,7 @@ t_link_list	*ft_cast_link(t_room *room)
 	res->prev = NULL;
 	res->link->room = room;
 	res->next = NULL;
-	if (room->type == 'i')
-		res->link->weight = 1;
-	else if (room->type == 'o')
-		res->link->weight = 0;
-	else
-		res->link->weight = INFINITY;
+	res->link->weight = room->type;
 	return (res);
 }
 
@@ -111,7 +106,7 @@ t_link_list_rough *to_del)
 
 void	ft_linking_rooms(t_room *room_1, t_room *room_2)
 {
-	ft_add_link(*(room_1->link_list)->link->room, room_2);
+	ft_add_link((room_1->link_list)->link->room, room_2);
 	ft_add_link(room_2, room_1);
 }
 
@@ -206,6 +201,6 @@ t_room	*ft_build(t_room_list_rough *r_room, t_link_list_rough *r_link)
 	{
 		//err
 	}
-	ft_print_map()
+	//ft_print_map();
 	return (start);
 }
