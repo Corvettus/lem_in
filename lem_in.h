@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/30 02:31:22 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 02:46:18 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,6 +82,8 @@ typedef struct	s_inp_val_data
 	int					err_pres;
 	int					wait_start;
 	int					wait_end;
+	int					r_count;
+	t_list				*input_seq;
 	t_room_list_rough	*r_lr;
 	t_link_list_rough	*l_lr;
 }				t_inp_val_data;
