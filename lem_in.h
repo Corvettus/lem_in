@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/27 21:38:42 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/28 16:13:01 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -31,8 +31,8 @@ typedef struct	s_room_data
 	int		x;
 	int		y;
 	int		height;
-	int		start;
-	int		end;
+	int		start_fl;
+	int		end_fl;
 }				t_room_data;
 
 typedef struct					s_room_list_rough
@@ -58,7 +58,7 @@ typedef struct	s_link
 typedef struct	s_link_list
 {
 	t_link_list	*prev;
-	t_link		*room;
+	t_link		*link;
 	t_link_list	*next;
 }				t_link_list;
 
