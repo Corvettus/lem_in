@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/30 01:05:11 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 02:31:22 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -18,7 +18,7 @@
 # include <stdio.h>
 # include <math.h>
 
-typedef struct	s_room_in			t_room_in;
+typedef struct	s_room				t_room;
 typedef struct s_link_list			t_link_list;
 typedef struct s_room_list_rough	t_room_list_rough;
 typedef struct	s_inp_val_data		t_inp_val_data;
@@ -101,6 +101,6 @@ typedef struct	s_path
 	struct s_path	*next;
 }				t_path;
 
-int main_input(void);
+t_inp_val_data main_input(int FD);
 
 #endif

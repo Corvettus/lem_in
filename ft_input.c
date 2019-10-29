@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 17:17:52 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/30 00:52:23 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 02:13:01 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -255,9 +255,8 @@ void    parse_line(char *line, int counter, t_inp_val_data *util_valdata)
         }
 }
 
-int     main_input(void)
+t_inp_val_data  main_input(int FD)
 {
-    int                 FD = 0;
     int                 counter;
     char                *line;
     t_inp_val_data      util_valdata;
@@ -271,8 +270,8 @@ int     main_input(void)
     util_valdata.start_pres = 0;   //
     util_valdata.wait_end = 0;
     util_valdata.wait_start = 0;
-    util_valdata.l_lr = 0;
-    util_valdata.r_lr = 0;
+    util_valdata.l_lr = NULL;
+    util_valdata.r_lr = NULL;
 
     while(get_next_line(FD, &line))
     {
@@ -299,6 +298,6 @@ int     main_input(void)
 
     //debug
     printf("worked fine\n");
-    return (1);
+    return (util_valdata);
     //debug
 }
