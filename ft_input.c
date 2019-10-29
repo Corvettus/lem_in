@@ -3,13 +3,13 @@
 /*                                                        :::      ::::::::   */
 /*   ft_input.c                                         :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 17:17:52 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/26 17:17:53 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 02:27:27 by wclayton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
-#include "libft/libft.h"
+
 #include "lem_in.h"
 #include "get_next_line.h"
 
@@ -211,6 +211,7 @@ int    parse_room(char *line, t_inp_val_data *util_valdata)
             util_valdata->end_pres = 1;
         }
         roomlistr_pushback(&(util_valdata->r_lr), r_lr);
+        util_valdata->r_count += 1;
         return (1);
     }
     return (0);
@@ -255,9 +256,31 @@ void    parse_line(char *line, int counter, t_inp_val_data *util_valdata)
         }
 }
 
-int     main_input(void)
+int     validate_xy(t_inp_val_data util_valdata)
 {
-    int                 FD = 0;
+    t_room_list_rough *i;
+    t_room_list_rough *j;
+
+    if (!(util_valdata.r_lr))
+        return (0);
+    
+    i = util_valdata.r_lr;
+    while (i->next != 0);
+    {
+        j = i->next;
+        while(j != 0)
+        {
+            if ((j->data->x == i->data->x) && (j->data->y == i->data->y))
+                return (0);
+            j = j->next;
+        }
+        i = i->next;
+    }
+    return (1);
+}
+
+int     main_input(int FD)
+{
     int                 counter;
     char                *line;
     t_inp_val_data      util_valdata;
@@ -273,11 +296,17 @@ int     main_input(void)
     util_valdata.wait_start = 0;
     util_valdata.l_lr = 0;
     util_valdata.r_lr = 0;
+    util_valdata.r_count = 0;
+    util_valdata.input_seq = 0;
 
     while(get_next_line(FD, &line))
     {
         if (line)
         {
+            if (!util_valdata.input_seq)
+                util_valdata.input_seq = ft_lstnew(line, ft_strlen(line));
+            else
+                ft_lstaddback(&(util_valdata.input_seq), ft_lstnew(line, ft_strlen(line)));
             if (!(line[0] == '#' && line[1] != '#'))
             {
                 
@@ -296,7 +325,13 @@ int     main_input(void)
             }
         }
     }
+    if (!(util_valdata.r_lr) || !(util_valdata.l_lr) 
+    || util_valdata.end_pres == 0 || util_valdata.start_pres == 0 
+    || util_valdata.block_switch == 0)
+        util_valdata.err_pres = 1;
 
+    util_valdata.err_pres += validate_xy_name(util_valdata);
+    
     //debug
     printf("worked fine\n");
     return (1);
