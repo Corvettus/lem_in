@@ -6,7 +6,7 @@
 /*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 17:17:52 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/30 02:29:26 by wclayton         ###   ########.fr       */
+/*   Updated: 2019/10/30 03:09:00 by wclayton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -265,12 +265,13 @@ int     validate_xy(t_inp_val_data util_valdata)
         return (0);
     
     i = util_valdata.r_lr;
-    while (i->next != 0);
+    while (i->next != 0)
     {
         j = i->next;
         while(j != 0)
         {
-            if ((j->data->x == i->data->x) && (j->data->y == i->data->y))
+            if (((j->data->x == i->data->x) && (j->data->y == i->data->y)) 
+            || (j->data->name == i->data->name))
                 return (0);
             j = j->next;
         }
@@ -330,7 +331,7 @@ int     main_input(int FD)
     || util_valdata.block_switch == 0)
         util_valdata.err_pres = 1;
 
-    util_valdata.err_pres += validate_xy_name(util_valdata);
+    util_valdata.err_pres += validate_xy(util_valdata);
     
     //debug
     printf("worked fine\n");
