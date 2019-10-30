@@ -14,7 +14,7 @@ SRCS = main.c \
 	   ft_make.c \
 	   get_next_line.c
 
-OBJS_CH = $(SRCS:.c=.o)
+OBJS = $(SRCS:.c=.o)
 
 all: $(LIB_NAME) $(NAME)
 
@@ -23,7 +23,7 @@ $(LIB_NAME):
 
 $(NAME):
 	@$(COMP) $(FLS) -c $(SRCS)
-	@$(COMP) $(FLS) -o $(NAME) $(OBJS) -L $(LIB_DIR) -lft -I get_next_line.h
+	@$(COMP) $(FLS) -o $(NAME) $(OBJS) -L $(LIB_DIR) -lft
 
 clean:
 	@make clean -C libft

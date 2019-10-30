@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/30 02:46:18 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 03:56:52 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -104,5 +104,7 @@ typedef struct	s_path
 }				t_path;
 
 t_inp_val_data main_input(int FD);
+t_room	*ft_build(t_room_list_rough *r_room, t_link_list_rough *r_link);
+int			get_next_line(const int fd, char **line);
 
 #endif

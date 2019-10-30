@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 04:51:52 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/30 01:56:08 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/10/30 04:10:39 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,8 +146,9 @@ t_room_list_rough *r_start, t_room **start)
 	t_room				*room_in;
 	t_link_list_rough	*r_next;
 	char				*tmp_name;
+	t_room_list_rough	*r_next_room;
 
-	if ((tmp = r_link) == NULL)
+	if ((tmp = *r_link) == NULL)
 		return (0);
 	while (ft_strcmp((const char*)tmp->name1,
 			(const char*)r_start->data->name) != 0 &&
@@ -167,21 +168,16 @@ t_room_list_rough *r_start, t_room **start)
 	if (*start == NULL)
 		*start = ft_create_room(r_start);
 	if (room_in == NULL)
-		room_in = ft_create_room(ft_r_seach_name(r_room, tmp_name));
-	ft_linking_rooms(start, room_in);
+		room_in = ft_create_room((r_next_room = ft_r_seach_name(r_room, tmp_name)));
+	ft_linking_rooms(*start, room_in);
 	*r_link = ft_r_link_list_del_elem(*r_link, tmp);
 	if (ft_make_map(r_room, r_link, r_start, start) == -1)
 	{
 		// free all
 		return (-1);
 	}
-	r_next = r_link;
-	while (ft_strcmp((const char*)r_next->name1,
-			(const char*)room_in->data->name) != 0 &&
-			ft_strcmp((const char*)r_next->name2,
-			(const char*)room_in->data->name) != 0 && r_next != NULL)
-		r_next = r_next->next;
-	if (ft_make_map(r_room, r_link, r_next, room_in))
+	r_next = *r_link;
+	if (ft_make_map(r_room, r_link, r_next_room, &room_in))
 	{
 		// free all
 		return (-1);
@@ -189,7 +185,7 @@ t_room_list_rough *r_start, t_room **start)
 	return (1);
 }
 
-ft_print_map(t_room *start, int height)
+void	ft_print_map(t_room *start, int height)
 {
 	t_link_list	*tmp;
 	ft_putnbr(height);
@@ -198,7 +194,8 @@ ft_print_map(t_room *start, int height)
 	while (tmp != NULL)
 	{
 		ft_putendl("");
-		ft_printf("%f\n", tmp->link->weight);
+		ft_putnbr((int)tmp->link->weight);
+		ft_putendl("");
 		ft_print_map(tmp->link->room, height + 1);
 		tmp = tmp->next;
 	}
@@ -210,12 +207,14 @@ t_room	*ft_build(t_room_list_rough *r_room, t_link_list_rough *r_link)
 	t_room_list_rough	*r_end;
 	t_room				*start;
 
+    ft_putstr("worked fine\n");
 	r_start = ft_seach_ends(r_room, 's');
 	r_end = ft_seach_ends(r_room, 'e');
 	if (ft_make_map(r_room, &r_link, r_start, &start) == -1)
 	{
 		//err
 	}
+    ft_putstr("worked fine\n");
 	ft_print_map(start, 0);
 	return (start);
 }
