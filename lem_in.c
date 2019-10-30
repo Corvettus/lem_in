@@ -6,17 +6,21 @@
 /*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 17:17:56 by tlynesse          #+#    #+#             */
+<<<<<<< HEAD
 /*   Updated: 2019/10/30 06:03:57 by wclayton         ###   ########.fr       */
+=======
+/*   Updated: 2019/10/30 02:49:42 by tlynesse         ###   ########.fr       */
+>>>>>>> 0752952a7deb032169c51ad59f99c8481e6a0dc8
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "lem_in.h"
+/* #include "lem_in.h"
 
 int		ft_bfs_heights_count(t_room *start)
 {
 	start->data->height = 0;
-	//while ()
-	//{}
+
+	
 }
 
 int		q_push(t_room_q **head, t_room *room, t_room *wherefrom)
@@ -101,3 +105,4 @@ void	lem_in(t_room *start, t_room *end)
 {
 	
 }
+ */

@@ -6,7 +6,7 @@
 /*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/26 17:17:52 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/30 03:09:00 by wclayton         ###   ########.fr       */
+/*   Updated: 2019/10/30 06:07:59 by wclayton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -280,7 +280,7 @@ int     validate_xy(t_inp_val_data util_valdata)
     return (1);
 }
 
-int     main_input(int FD)
+t_inp_val_data     main_input(int FD)
 {
     int                 counter;
     char                *line;
@@ -295,8 +295,8 @@ int     main_input(int FD)
     util_valdata.start_pres = 0;   //
     util_valdata.wait_end = 0;
     util_valdata.wait_start = 0;
-    util_valdata.l_lr = 0;
-    util_valdata.r_lr = 0;
+    util_valdata.l_lr = NULL;
+    util_valdata.r_lr = NULL;
     util_valdata.r_count = 0;
     util_valdata.input_seq = 0;
 
@@ -334,7 +334,7 @@ int     main_input(int FD)
     util_valdata.err_pres += validate_xy(util_valdata);
     
     //debug
-    printf("worked fine\n");
-    return (1);
+    ft_putstr("worked fine\n");
+    return (util_valdata);
     //debug
 }

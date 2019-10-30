@@ -6,7 +6,7 @@
 /*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/25 01:33:38 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/30 04:43:48 by wclayton         ###   ########.fr       */
+/*   Updated: 2019/10/30 06:07:48 by wclayton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -91,6 +91,7 @@ typedef struct	s_inp_val_data
 
 typedef struct	s_way
 {
+	struct s_way	*prev;
 	t_room			*room;
 	struct s_way	*next;
 }				t_way;
@@ -103,6 +104,14 @@ typedef struct	s_path
 	struct s_path	*next;
 }				t_path;
 
-int main_input(int FD);
+typedef struct	s_room_q
+{
+	struct s_room_q	*next;
+	t_room			*room;
+	t_room			*wherefrom;
+}				t_room_q;
+
+
+t_inp_val_data main_input(int FD);
 
 #endif
