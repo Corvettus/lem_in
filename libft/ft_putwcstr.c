@@ -1,22 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_swap.c                                          :+:      :+:    :+:   */
+/*   ft_putwcstr.c                                      :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 00:23:56 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/12/09 17:39:02 by tlynesse         ###   ########.fr       */
+/*   Created: 2019/04/16 14:56:44 by aromny-w          #+#    #+#             */
+/*   Updated: 2019/04/16 14:56:45 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_swap(void **a, void **b)
+void	ft_putwcstr(const wchar_t *s)
 {
-	void	*t;
-
-	t = *a;
-	*a = *b;
-	*b = t;
+	while (*s)
+		ft_putwchar(*s++);
 }

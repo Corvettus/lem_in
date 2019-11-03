@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_isalpha.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/24 02:57:00 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/12/09 17:15:18 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/12/02 01:14:25 by aromny-w          #+#    #+#             */
+/*   Updated: 2018/12/02 01:14:28 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	ft_isalpha(int c)
 {
-	return ((c >= 'a' && c <= 'z') || (c >= 'A' && c <= 'Z') ? 1 : 0);
+	if (ft_isupper(c) || ft_islower(c))
+		return (1);
+	return (0);
 }

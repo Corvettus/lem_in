@@ -1,25 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_strclen.c                                       :+:      :+:    :+:   */
+/*   dcl_begin.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/01/21 23:11:11 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/19 16:12:30 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/12/07 18:58:45 by wclayton          #+#    #+#             */
+/*   Updated: 2019/11/02 07:13:55 by wclayton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#include "./libft.h"
+#include "libft.h"
 
-size_t	ft_strclen(const char *s, char c)
+void			dcl_begin(t_dcl **elem)
 {
-	size_t	res;
-
-	res = 0;
-	while ((char)s[res] != c && s[res] && res + 1 > res)
-		res++;
-	if (res + 1 < res)
-		return (0);
-	return (res);
+	while ((*elem)->previous)
+		dcl_back(elem);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strcat.c                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/22 18:30:01 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/11/30 04:46:37 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/11/30 18:09:46 by aromny-w          #+#    #+#             */
+/*   Updated: 2018/11/30 18:09:48 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,13 +14,11 @@
 
 char	*ft_strcat(char *s1, const char *s2)
 {
-	char	*temp;
+	size_t	len;
 
-	temp = s1;
-	while (*temp)
-		temp++;
+	len = ft_strlen(s1);
 	while (*s2)
-		*(temp++) = *(s2++);
-	*temp = 0;
+		s1[len++] = *s2++;
+	s1[len] = '\0';
 	return (s1);
 }

@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strtrim.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/27 10:01:12 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/12/05 14:45:54 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/12/06 23:38:39 by aromny-w          #+#    #+#             */
+/*   Updated: 2018/12/07 14:59:42 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,28 +14,25 @@
 
 char	*ft_strtrim(char const *s)
 {
-	char	*res;
-	size_t	i;
-	size_t	buf;
+	char		*str;
+	size_t		len;
+	size_t		i;
+	size_t		j;
 
-	if (!s)
-		return (0);
-	i = 0;
-	buf = 0;
-	while (s[i] == ' ' || s[i] == '\n' || s[i] == '\t')
-		i++;
-	while (s[i++])
-		buf++;
-	i -= 2;
-	while ((s[i] == ' ' || s[i] == '\n' || s[i] == '\t') && buf)
+	len = ft_strlen(s);
+	while ((ft_isblank(s[len - 1]) || s[len - 1] == '\n') && len)
+		len--;
+	j = 0;
+	while ((ft_isblank(s[j]) || s[j] == '\n') && len)
 	{
-		buf--;
-		i--;
+		j++;
+		len--;
 	}
-	if (!(res = (char*)malloc((buf + 1) * sizeof(char))))
-		return (0);
-	res[buf--] = 0;
-	while (buf + 1)
-		res[buf--] = (char)s[i--];
-	return (res);
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
+	while (len--)
+		str[i++] = s[j++];
+	str[i] = '\0';
+	return (str);
 }

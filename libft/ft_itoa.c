@@ -3,49 +3,45 @@
 /*                                                        :::      ::::::::   */
 /*   ft_itoa.c                                          :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/25 23:23:01 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/12/09 16:58:43 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/12/10 17:29:02 by aromny-w          #+#    #+#             */
+/*   Updated: 2018/12/10 17:29:05 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-static void	puting_i_to_a(int n, char **res, size_t buf)
+static size_t	dcount(int n)
 {
-	unsigned int	k;
+	size_t	count;
 
-	k = (n < 0 ? -n : n);
-	while (k)
-	{
-		(*res)[--buf] = (char)(k % 10 + '0');
-		k /= 10;
-	}
+	count = 1;
+	while (n /= 10)
+		count++;
+	return (count);
 }
 
-char		*ft_itoa(int n)
+char			*ft_itoa(int n)
 {
-	char	*res;
-	int		k;
-	size_t	buf;
+	char	*str;
+	int		sign;
+	size_t	len;
+	size_t	i;
 
-	if (!n)
-		return (ft_strdup("0"));
-	buf = 1;
-	if (n < 0)
-		buf++;
-	k = n;
-	while (k)
-	{
-		buf++;
-		k /= 10;
-	}
-	if (!(res = (char*)malloc(buf * sizeof(char))))
-		return (0);
-	res[--buf] = 0;
-	if (n < 0)
-		*res = '-';
-	puting_i_to_a(n, &res, buf);
-	return (res);
+	if (n == INT_MIN)
+		return (ft_strdup("-2147483648"));
+	if ((sign = n < 0 ? -1 : 1) == -1)
+		n = -n;
+	len = (sign == -1 ? 1 : 0) + dcount(n);
+	if (!(str = (char *)malloc(sizeof(char) * (len + 1))))
+		return (NULL);
+	i = 0;
+	str[i++] = n % 10 + '0';
+	while (n /= 10)
+		str[i++] = n % 10 + '0';
+	if (sign == -1)
+		str[i++] = '-';
+	str[i] = '\0';
+	return (ft_strrev(str));
 }

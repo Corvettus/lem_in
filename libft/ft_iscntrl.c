@@ -1,39 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_isnumber.c                                      :+:      :+:    :+:   */
+/*   ft_iscntrl.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 14:33:03 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/24 14:33:04 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/12/17 22:53:46 by aromny-w          #+#    #+#             */
+/*   Updated: 2018/12/17 22:53:48 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_isnumber(char *str)
+int	ft_iscntrl(int c)
 {
-	int i;
-
-	if (!str)
-		return (0);
-	i = 0;
-	while (str[i])
-	{
-		if (str[i] == '-')
-		{
-			if (i == 0)
-			{
-				i++;
-				continue ;
-			}
-			else
-				return (0);
-		}
-		if (!ft_isdigit(str[i]))
-			return (0);
-		i++;
-	}
-	return (1);
+	if (ft_isascii(c) && !ft_isprint(c))
+		return (1);
+	return (0);
 }

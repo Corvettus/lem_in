@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_strlcat.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/23 14:58:08 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/12/01 16:38:02 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/11/30 18:11:21 by aromny-w          #+#    #+#             */
+/*   Updated: 2018/11/30 18:11:23 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,21 +14,11 @@
 
 size_t	ft_strlcat(char *dst, const char *src, size_t size)
 {
-	size_t	i;
-	size_t	lendst;
-	size_t	lensrc;
+	size_t	len;
 
-	lendst = ft_strlen((const char*)dst);
-	lensrc = ft_strlen(src);
-	i = 0;
-	while ((i + lendst + 1) < size && src[i])
-	{
-		dst[lendst + i] = src[i];
-		i++;
-	}
-	dst[lendst + i] = 0;
-	if (size < lendst)
-		return (lensrc + size);
-	else
-		return (lensrc + lendst);
+	len = ft_strlen(dst);
+	while (*src && len + 1 < size)
+		dst[len++] = *src++;
+	dst[len] = '\0';
+	return (ft_strnlen(dst, size) + ft_strlen(src));
 }

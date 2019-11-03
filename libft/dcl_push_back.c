@@ -1,27 +1,20 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_lst_mem.c                                  :+:      :+:    :+:   */
+/*   dcl_push_back.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/09 15:10:03 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/12/09 15:10:09 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/12/07 18:57:32 by wclayton          #+#    #+#             */
+/*   Updated: 2019/11/02 07:26:21 by wclayton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-t_list	*ft_free_lst_mem(t_list **lst)
+void			dcl_push_back(t_dcl **first, t_dcl *next)
 {
-	t_list	*tmp;
-
-	while (*lst)
-	{
-		tmp = *lst;
-		(*lst) = (*lst)->next;
-		free(tmp);
-		tmp = 0;
-	}
-	return (*lst);
+	dcl_end(first);
+	(*first)->next = next;
+	next->previous = *first;
 }

@@ -1,35 +1,31 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_lstaddback.c                                    :+:      :+:    :+:   */
+/*   ft_putnwcstr_fd.c                                  :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/09 12:32:39 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/12/09 17:06:38 by tlynesse         ###   ########.fr       */
+/*   Created: 2019/06/22 11:06:18 by aromny-w          #+#    #+#             */
+/*   Updated: 2019/06/22 11:06:19 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-void	ft_lstaddback(t_list **alst, t_list *new)
+void	ft_putnwcstr_fd(const wchar_t *s, size_t n, int fd)
 {
-	t_list	*tmp;
-
-	if (alst && new)
+	while (*s && n)
 	{
-		if (*alst)
-		{
-			tmp = *alst;
-			while (tmp->next)
-				tmp = tmp->next;
-			tmp->next = new;
-			new->next = 0;
-		}
+		if (*s < 128 && n >= 1)
+			n--;
+		else if (*s < 2048 && n >= 2)
+			n -= 2;
+		else if (*s < 65436 && n >= 3)
+			n -= 3;
+		else if (n >= 4)
+			n -= 4;
 		else
-		{
-			*alst = new;
-			(*alst)->next = 0;
-		}
+			break ;
+		ft_putwchar_fd(*s++, fd);
 	}
 }

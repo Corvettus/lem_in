@@ -1,30 +1,28 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_free_matrix_mem.c                               :+:      :+:    :+:   */
+/*   ft_lstfree.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/09 12:08:54 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/12/09 12:14:22 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/11/28 17:16:55 by wclayton          #+#    #+#             */
+/*   Updated: 2019/11/02 07:17:23 by wclayton         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-char	**ft_free_matrix_mem(char ***s)
+void		ft_lstfree(t_list **alst)
 {
-	char	*tmp;
+	t_list	*tmp;
 
-	while (**s)
+	if (!(alst && *alst))
+		return ;
+	while (*alst)
 	{
-		tmp = **s;
-		free((**s)++);
-		tmp = 0;
+		tmp = (*alst)->next;
+		ft_lstfreeone(&(*alst));
+		*alst = tmp;
 	}
-	free(**s);
-	**s = 0;
-	free(*s);
-	*s = 0;
-	return (*s);
+	*alst = 0;
 }

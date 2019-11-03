@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_abs.c                                           :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2019/10/24 12:58:41 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/10/24 13:21:48 by tlynesse         ###   ########.fr       */
+/*   Created: 2019/10/10 21:33:44 by aromny-w          #+#    #+#             */
+/*   Updated: 2019/10/13 15:19:30 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,5 @@ int	ft_abs(int i)
 {
 	if (i < 0)
 		return (-i);
-	else
-		return (i);
+	return (i);
 }

@@ -1,26 +1,23 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   ft_sqrt.c                                          :+:      :+:    :+:   */
+/*   ft_strnlen.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/20 00:52:59 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/12/09 17:39:26 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/12/15 21:40:31 by aromny-w          #+#    #+#             */
+/*   Updated: 2018/12/15 21:40:33 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "libft.h"
 
-int	ft_sqrt(int nb)
+size_t	ft_strnlen(const char *s, size_t maxlen)
 {
-	int	i;
+	size_t	len;
 
-	i = 1;
-	while (i * i < nb)
-		i++;
-	if (i * i == nb)
-		return (i);
-	else
-		return (0);
+	len = 0;
+	while (*s++ && maxlen--)
+		len++;
+	return (len);
 }

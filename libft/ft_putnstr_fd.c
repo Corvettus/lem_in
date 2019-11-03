@@ -1,24 +1,19 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   get_next_line.h                                    :+:      :+:    :+:   */
+/*   ft_putnstr_fd.c                                    :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/12/14 18:39:47 by tlynesse          #+#    #+#             */
-/*   Updated: 2019/01/22 18:35:59 by tlynesse         ###   ########.fr       */
+/*   Created: 2019/06/22 10:53:10 by aromny-w          #+#    #+#             */
+/*   Updated: 2019/06/22 10:53:11 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
-#ifndef GET_NEXT_LINE_H
-# define GET_NEXT_LINE_H
+#include "libft.h"
 
-# define BUFF_SIZE 21
-# define FD_MAX_NUM 4864
-
-# include <sys/types.h>
-# include "libft/libft.h"
-
-int	get_next_line(const int fd, char **line);
-
-#endif
+void	ft_putnstr_fd(const char *s, size_t n, int fd)
+{
+	while (*s && n--)
+		ft_putchar_fd(*s++, fd);
+}

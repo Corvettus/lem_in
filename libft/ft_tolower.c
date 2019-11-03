@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   ft_tolower.c                                       :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: tlynesse <marvin@42.fr>                    +#+  +:+       +#+        */
+/*   By: aromny-w <marvin@42.fr>                    +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2018/11/24 03:31:13 by tlynesse          #+#    #+#             */
-/*   Updated: 2018/11/24 03:31:37 by tlynesse         ###   ########.fr       */
+/*   Created: 2018/12/02 02:06:16 by aromny-w          #+#    #+#             */
+/*   Updated: 2018/12/02 02:06:18 by aromny-w         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,5 +14,7 @@
 
 int	ft_tolower(int c)
 {
-	return (c >= 'A' && c <= 'Z' ? c - 'A' + 'a' : c);
+	if (ft_isupper(c))
+		return (c + 32);
+	return (c);
 }
