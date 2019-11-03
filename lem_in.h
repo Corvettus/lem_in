@@ -6,14 +6,14 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 20:25:26 by aromny-w          #+#    #+#             */
-/*   Updated: 2019/11/04 00:44:44 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/11/04 00:52:39 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
-# include "libft.h"
+# include "./libft//inc/libft.h"
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
