@@ -8,11 +8,7 @@ LIB_NAME = libft
 
 LIB_DIR = ./libft
 
-SRCS = main.c \
-       lem_in.c \
-	   ft_input.c \
-	   ft_make.c \
-	   get_next_line.c
+SRCS = main.c
 
 OBJS = $(SRCS:.c=.o)
 

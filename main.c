@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   main.c                                             :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/10/20 15:45:21 by wclayton          #+#    #+#             */
-/*   Updated: 2019/11/03 23:50:22 by wclayton         ###   ########.fr       */
+/*   Updated: 2019/11/04 00:41:12 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -288,6 +288,19 @@ int		check_roomname(t_room *room, char *name)
 	return (0);
 }
 
+size_t	namelen1(char *line)
+{
+	size_t	len;
+
+	len = 0;
+	while (ft_isalnum(*line) || *line == '_')
+	{
+		line++;
+		len++;
+	}
+	return (len);
+}
+
 size_t	namelen2(char *line)
 {
 	size_t	len;
@@ -297,19 +310,6 @@ size_t	namelen2(char *line)
 		line++;
 	if (!*line++)
 		return (0);
-	while (ft_isalnum(*line) || *line == '_')
-	{
-		line++;
-		len++;
-	}
-	return (len);
-}
-
-size_t	namelen1(char *line)
-{
-	size_t	len;
-
-	len = 0;
 	while (ft_isalnum(*line) || *line == '_')
 	{
 		line++;
@@ -806,20 +806,6 @@ void	add_link(t_link **link, t_link *new)
 	*link = new;
 }
 
-int		iscoord2(char **line)
-{
-	long	nbr;
-
-	nbr = 0;
-	if (**line == '-')
-		return (0);
-	while (ft_isdigit(**line) && nbr <= INT_MAX)
-		nbr = 10 * nbr + (*(*line)++ - '0');
-	if (**line == '\0' && nbr <= INT_MAX)
-		return (1);
-	return (0);
-}
-
 int		iscoord1(char **line)
 {
 	long	nbr;
@@ -830,6 +816,20 @@ int		iscoord1(char **line)
 	while (ft_isdigit(**line) && nbr <= INT_MAX)
 		nbr = 10 * nbr + (*(*line)++ - '0');
 	if (*(*line)++ == ' ' && nbr <= INT_MAX)
+		return (1);
+	return (0);
+}
+
+int		iscoord2(char **line)
+{
+	long	nbr;
+
+	nbr = 0;
+	if (**line == '-')
+		return (0);
+	while (ft_isdigit(**line) && nbr <= INT_MAX)
+		nbr = 10 * nbr + (*(*line)++ - '0');
+	if (**line == '\0' && nbr <= INT_MAX)
 		return (1);
 	return (0);
 }
@@ -1122,19 +1122,6 @@ void		linker(t_room *room_1, t_room *room_2)
 	room_2->links++;
 }
 
-t_room	*getroom2(char *line, t_map map)
-{
-	char	*name;
-
-	while (*line != '-')
-		line++;
-	name = ft_strdup(++line);
-	while (map.room && ft_strcmp(name, map.room->name))
-		map.room = map.room->next;
-	free(name);
-	return (map.room);
-}
-
 t_room	*getroom1(char *line, t_map map)
 {
 	char	*name;
@@ -1144,6 +1131,19 @@ t_room	*getroom1(char *line, t_map map)
 	while (line[len] != '-')
 		len++;
 	name = ft_strsub(line, 0, len);
+	while (map.room && ft_strcmp(name, map.room->name))
+		map.room = map.room->next;
+	free(name);
+	return (map.room);
+}
+
+t_room	*getroom2(char *line, t_map map)
+{
+	char	*name;
+
+	while (*line != '-')
+		line++;
+	name = ft_strdup(++line);
 	while (map.room && ft_strcmp(name, map.room->name))
 		map.room = map.room->next;
 	free(name);
