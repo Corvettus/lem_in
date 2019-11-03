@@ -5,8 +5,8 @@
 #                                                     +:+ +:+         +:+      #
 #    By: lreznak- <marvin@42.fr>                    +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
-#    Created: 2018/11/20 18:37:19 by lreznak-          #+#    #+#              #
-#    Updated: 2019/06/11 02:47:58 by lreznak-         ###   ########.fr        #
+#    Created: 2018/11/20 18:37:19 by wclayton          #+#    #+#              #
+#    Updated: 2019/06/11 02:47:58 by wclayton         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -21,7 +21,7 @@ SRC = \
 	ft_strcmp.c ft_strcpy.c ft_strdel.c ft_strdup.c ft_strequ.c  ft_striter.c ft_striteri.c ft_strjoin.c ft_strlcat.c \
 	ft_strlen.c ft_strmap.c ft_strmapi.c ft_strncat.c ft_strncmp.c ft_strncpy.c ft_strnequ.c ft_strnew.c ft_strnstr.c \
 	ft_strrchr.c ft_strsplit.c ft_strstr.c ft_strsub.c ft_strtrim.c ft_tolower.c ft_toupper.c is_left_orient.c make_rpn.c \
-	ft_nputchar.c ft_atoi_base.c \
+	ft_nputchar.c ft_atoi_base.c ft_lstrev.c ft_getnbr.c\
 	get_next_line.c ft_strmerge.c \
 
 OBJ = *.o
