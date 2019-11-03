@@ -6,7 +6,7 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 20:25:26 by aromny-w          #+#    #+#             */
-/*   Updated: 2019/11/04 00:56:17 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/11/04 01:00:38 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -17,6 +17,9 @@
 # include <fcntl.h>
 # include <stdio.h>
 # include <math.h>
+# include "./libft/get_next_line.h"
+
+# define INT_MAX 2147483647
 
 
 typedef struct s_room	t_room;

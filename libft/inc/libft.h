@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   libft.h                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: wclayton <wclayton@student.42.fr>          +#+  +:+       +#+        */
+/*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2018/11/20 18:19:29 by wclayton          #+#    #+#             */
-/*   Updated: 2019/11/02 07:32:00 by wclayton         ###   ########.fr       */
+/*   Updated: 2019/11/04 01:06:44 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -146,5 +146,8 @@ int					calc(char *expr);
 t_matrix			*make_matrix(int rowc, int colc, int *arr, int n);
 void				print_matrix(t_matrix *matrix);
 t_matrix			*add_matrix(t_matrix *left, t_matrix *right);
+
+void				ft_lstrev(t_list **alst);
+int					ft_getnbr(const char *str);
 
 #endif
