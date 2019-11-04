@@ -2,13 +2,22 @@ NAME = lem_in
 
 COMP = gcc
 
-FLS =
+FLS = -Wall -Wextra -Werror
 
 LIB_NAME = libft
 
 LIB_DIR = ./libft
 
-SRCS = main.c
+SRCS = main.c \
+       dijkstra_1.c dijkstra_2.c \
+	   rooms_n_links.c \
+	   read_check.c checker.c is_room.c \
+	   set.c init.c get.c get2.c \
+	   compl.c \
+       writing.c \
+	   link.c mat.c path.c \
+	   ways.c rooms.c \
+	   del.c
 
 OBJS = $(SRCS:.c=.o)
 

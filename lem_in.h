@@ -6,55 +6,57 @@
 /*   By: tlynesse <tlynesse@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2019/09/02 20:25:26 by aromny-w          #+#    #+#             */
-/*   Updated: 2019/11/04 01:00:38 by tlynesse         ###   ########.fr       */
+/*   Updated: 2019/11/04 02:59:23 by tlynesse         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef LEM_IN_H
 # define LEM_IN_H
 
+# define INT_MAX 2147483647
+
 # include "./libft/inc/libft.h"
 # include <fcntl.h>
-# include <stdio.h>
 # include <math.h>
 # include "./libft/get_next_line.h"
 
-# define INT_MAX 2147483647
-
-
 typedef struct s_room	t_room;
 
-typedef struct	s_way
-{
-	t_room			*room;
-	int				ant;
-	int				suurbale;
-	struct s_way	*next;
-}				t_way;
+typedef struct s_link	t_link;
 
-typedef struct	s_path
+typedef struct s_way	t_way;
+
+typedef struct			s_path
 {
 	int				dist;
 	t_way			*way;
 	struct s_path	*next;
-}				t_path;
+}						t_path;
 
-typedef struct	s_link
+typedef struct			s_point
+{
+	int					x;
+	int					y;
+}						t_point;
+
+typedef struct			s_link
 {
 	t_room			*room;
 	float			weight;
 	int				visited;
 	int				excluded;
 	struct s_link	*next;
-}				t_link;
+}						t_link;
 
-typedef struct	s_point
+typedef struct			s_way
 {
-	int	x;
-	int	y;
-}				t_point;
+	t_room			*room;
+	int				ant;
+	int				suurbale;
+	struct s_way	*next;
+}						t_way;
 
-struct			s_room
+typedef struct			s_room
 {
 	char			*name;
 	t_point			coords;
@@ -65,9 +67,9 @@ struct			s_room
 	int				links;
 	t_link			*link;
 	struct s_room	*next;
-};
+}						t_room;
 
-typedef struct	s_map
+typedef struct			s_map
 {
 	int				ant_num;
 	t_list			*buf;
@@ -84,21 +86,21 @@ typedef struct	s_map
 	int				start_id;
 	int				end_id;
 	
-}				t_map;
+}						t_map;
 
-typedef struct	s_dijkstra
+typedef struct			s_dijkstra
 {
-	int			*q;
-	int			*q1;
-	int			**matrix;
-	int			matrix_size;
-	int			*vert;
-	int			*dist;
-	int			*poin;
-	int			min;
-	int			i;
-	int			latest_dist;
-}				t_dijkstra;
+	int				*q;
+	int				*q1;
+	int				**matrix;
+	int				matrix_size;
+	int				*vert;
+	int				*dist;
+	int				*poin;
+	int				min;
+	int				i;
+	int				latest_dist;
+}						t_dijkstra;
 
 void	del_link(t_link **alst);
 void	rooml_comp(t_link **link, t_room *end);
@@ -117,6 +119,7 @@ int		way_len(t_way *way);
 void	path_push(t_path ***path, t_way *way, int num, t_map *map);
 t_way	*way_prettify(t_way *way);
 int		doublelink(t_room *room, char *name1, char *name2);
+
 int		check_roomname(t_room *room, char *name);
 
 size_t	namelen1(char *line);
@@ -214,5 +217,7 @@ int		val_part(t_map map);
 void	initmap(t_map *map);
 
 void	lem(int fd);
+void	dijkstra_util(int linked, int cur, int i, t_dijkstra **dijkstra);
+void	add_way(t_way **way, t_way *new);
 
 #endif
