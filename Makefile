@@ -2,7 +2,7 @@ NAME = lem_in
 
 COMP = gcc
 
-FLS = -Wall -Wextra -Werror
+FLS =
 
 LIB_NAME = libft
 
